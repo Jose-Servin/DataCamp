@@ -38,3 +38,4 @@ FROM '/Users/joseservin/DataCamp/Projects/Customer_Personality_Analysis/marketin
 WITH (FORMAT CSV, HEADER, DELIMITER ';');
 
 SELECT * FROM master_data;
+
