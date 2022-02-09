@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="08f12346-891c-4665-862a-b8e01264cac9" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Courses/Intro_Importing_Data/Importing_Data.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Courses/Intro_Importing_Data/Importing_Data.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -24,7 +25,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Python" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -35,7 +36,9 @@
       <option name="presentableId" value="Default" />
       <updated>1644168938776</updated>
       <workItem from="1644261877473" duration="345000" />
-      <workItem from="1644262234973" duration="3716000" />
+      <workItem from="1644262234973" duration="3812000" />
+      <workItem from="1644276470798" duration="276000" />
+      <workItem from="1644357151887" duration="4208000" />
     </task>
     <servers />
   </component>
