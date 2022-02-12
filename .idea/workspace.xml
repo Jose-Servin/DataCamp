@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="08f12346-891c-4665-862a-b8e01264cac9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Courses/Intro_Importing_Data/Importing_Data.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Courses/Intro_Importing_Data/Importing_Data.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +38,8 @@
       <workItem from="1644262234973" duration="3812000" />
       <workItem from="1644276470798" duration="276000" />
       <workItem from="1644357151887" duration="4255000" />
-      <workItem from="1644457765729" duration="5962000" />
+      <workItem from="1644457765729" duration="6054000" />
+      <workItem from="1644687292302" duration="14000" />
     </task>
     <servers />
   </component>
