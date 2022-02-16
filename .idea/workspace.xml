@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="08f12346-891c-4665-862a-b8e01264cac9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Courses/Intermediate_Importing_Data/twitter_auth.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Courses/Intermediate_Importing_Data/twitter_auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/Courses/Intermediate_Importing_Data/twitter_auth.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,7 +63,8 @@
       <workItem from="1644895457300" duration="3042000" />
       <workItem from="1644979734762" duration="894000" />
       <workItem from="1644981897451" duration="629000" />
-      <workItem from="1645028326901" duration="1229000" />
+      <workItem from="1645028326901" duration="1272000" />
+      <workItem from="1645030292706" duration="83000" />
     </task>
     <servers />
   </component>
