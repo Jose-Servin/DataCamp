@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="08f12346-891c-4665-862a-b8e01264cac9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Courses/Working_with_Dates_and_Times/1.Notes.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Courses/Cleaning_Data/cleaning_data.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Courses/Cleaning_Data/cleaning_data.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,8 +13,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Jupyter Notebook" />
         <option value="Python Script" />
+        <option value="Jupyter Notebook" />
       </list>
     </option>
   </component>
@@ -41,7 +41,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Python" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -72,7 +72,10 @@
       <workItem from="1645205927543" duration="3322000" />
       <workItem from="1645215213297" duration="2397000" />
       <workItem from="1645284289793" duration="6648000" />
-      <workItem from="1645311583518" duration="4036000" />
+      <workItem from="1645311583518" duration="4210000" />
+      <workItem from="1645378954635" duration="343000" />
+      <workItem from="1645379314099" duration="92000" />
+      <workItem from="1645464632689" duration="2111000" />
     </task>
     <servers />
   </component>
