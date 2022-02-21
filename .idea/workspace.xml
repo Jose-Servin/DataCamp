@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="08f12346-891c-4665-862a-b8e01264cac9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Courses/Working_with_Dates_and_Times/1.Notes.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Courses/Working_with_Dates_and_Times/1.Notes.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Courses/Working_with_Dates_and_Times/1.Notes.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +75,8 @@
       <workItem from="1645311583518" duration="4210000" />
       <workItem from="1645378954635" duration="343000" />
       <workItem from="1645379314099" duration="92000" />
-      <workItem from="1645464632689" duration="2111000" />
+      <workItem from="1645464632689" duration="2157000" />
+      <workItem from="1645478686443" duration="3348000" />
     </task>
     <servers />
   </component>
