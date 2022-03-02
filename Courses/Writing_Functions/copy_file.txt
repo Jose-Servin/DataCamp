@@ -1,0 +1,3 @@
+This is an example text file that 
+will be used to explore the various
+ways txt files can be read and used using Python. 
