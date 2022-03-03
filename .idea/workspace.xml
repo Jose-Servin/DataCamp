@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="08f12346-891c-4665-862a-b8e01264cac9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Courses/Writing_Functions/copy_file.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Courses/PP_Data_Types/1.Notes.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Courses/Writing_Functions/1.Notes.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Courses/Writing_Functions/1.Notes.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +91,8 @@
       <workItem from="1646177734674" duration="42000" />
       <workItem from="1646177786911" duration="1284000" />
       <workItem from="1646253356419" duration="1875000" />
-      <workItem from="1646259736771" duration="850000" />
+      <workItem from="1646259736771" duration="899000" />
+      <workItem from="1646338042612" duration="1405000" />
     </task>
     <servers />
   </component>
