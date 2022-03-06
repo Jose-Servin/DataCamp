@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="08f12346-891c-4665-862a-b8e01264cac9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Courses/PP_Writing_Efficient_Python/1.Notes.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Courses/PP_Writing_Efficient_Python/hero_funcs.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Courses/PP_Data_Types/1.Notes.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Courses/PP_Data_Types/1.Notes.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Courses/PP_Writing_Efficient_Python/1.Notes.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Courses/PP_Writing_Efficient_Python/1.Notes.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,8 +14,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="Jupyter Notebook" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -94,7 +94,12 @@
       <workItem from="1646253356419" duration="1875000" />
       <workItem from="1646259736771" duration="899000" />
       <workItem from="1646338042612" duration="1450000" />
-      <workItem from="1646495369057" duration="3744000" />
+      <workItem from="1646495369057" duration="3898000" />
+      <workItem from="1646515678971" duration="223000" />
+      <workItem from="1646516766224" duration="25000" />
+      <workItem from="1646517203858" duration="108000" />
+      <workItem from="1646519348188" duration="494000" />
+      <workItem from="1646536767229" duration="3128000" />
     </task>
     <servers />
   </component>
