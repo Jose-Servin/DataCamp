@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="08f12346-891c-4665-862a-b8e01264cac9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Courses/PP_Regular_Expressions/1.Notes.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Courses/PP_Regular_Expressions/1.Notes.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +40,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -104,7 +103,10 @@
       <workItem from="1646617970589" duration="902000" />
       <workItem from="1646665581565" duration="2068000" />
       <workItem from="1646766188479" duration="4804000" />
-      <workItem from="1646865246479" duration="6866000" />
+      <workItem from="1646865246479" duration="7319000" />
+      <workItem from="1647031280809" duration="1123000" />
+      <workItem from="1647032544440" duration="625000" />
+      <workItem from="1647274673066" duration="390000" />
     </task>
     <servers />
   </component>
