@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="08f12346-891c-4665-862a-b8e01264cac9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Courses/PP_Web_Scrapping/pywiki_main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Courses/PP_Web_Scrapping/1.Notes.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Courses/PP_Web_Scrapping/1.Notes.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Courses/Writing_Functions/1.Notes.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Courses/Writing_Functions/1.Notes.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,7 +164,8 @@
       <workItem from="1647445885182" duration="4495000" />
       <workItem from="1647451495711" duration="1575000" />
       <workItem from="1647528603302" duration="4899000" />
-      <workItem from="1647717973206" duration="3696000" />
+      <workItem from="1647717973206" duration="3929000" />
+      <workItem from="1647895030856" duration="2202000" />
     </task>
     <servers />
   </component>
