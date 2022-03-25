@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="08f12346-891c-4665-862a-b8e01264cac9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Courses/PP_Intro_Shell/Notes.MD" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Courses/Writing_Functions/1.Notes.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Courses/Writing_Functions/1.Notes.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +41,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunManager" selected="Python.pywiki_main">
     <configuration name="pywiki_main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -167,7 +167,8 @@
       <workItem from="1647717973206" duration="3929000" />
       <workItem from="1647895030856" duration="2245000" />
       <workItem from="1647984059311" duration="530000" />
-      <workItem from="1648146808574" duration="5274000" />
+      <workItem from="1648146808574" duration="5360000" />
+      <workItem from="1648218409934" duration="6019000" />
     </task>
     <servers />
   </component>
