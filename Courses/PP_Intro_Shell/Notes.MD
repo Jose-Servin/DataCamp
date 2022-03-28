@@ -51,7 +51,7 @@ ls
 will be overwritten. <br>
 To copy two or more files from a directory into another directory use the following command syntax.
 ```shell
-cp directoryone/file.py directoryone/file.py directorytwo 
+cp directoryone/fileone.py directoryone/filetwo.py directorytwo 
 ```
 To move a file use the `mv` command following the same logic as `cp`.
 
@@ -80,3 +80,60 @@ mkdir parent/child
 ```
 You can rename a directory using `mv DataCamp DataCampMaster` which will rename the DatCamp directory to DataCampMaster.
 To delete a directory you use `rmdir` but you must first delete the files in the directory before you can delete the whole directory.
+
+## How to view a file's content?
+The simplest way to view the content of a file is by using the `cat` command. 
+```shell
+cat user_info.txt
+```
+## How to view large files?
+Use the `less` command to <strong>page</strong> the output of files. 
+```shell
+less user_info.txt
+```
+## How to view the head
+Use the `head` command along with file path to see the first 10 lines of a file.
+## How to control what commands do?
+To control what a command can do, use a flag. 
+```shell
+head -n 5 user_txt.csv
+```
+This will now display the first 5 rows rather than the first 10 rows. 
+## How to list everything below a directory?
+To view everything that is underneath a directory you can use the flag `-R` which stands for recursive with the `ls` 
+command. `ls -R` when used in the home directory will list all files and directories at every level. 
+
+## How to select columns from a file?
+To select columns from a file use the `cut` command. For example: `cut -f 2-5,8 -d , values.csv`.
+* the `-f` flag "fields" 
+* 2-5,8 means columns 2 through 5 and 8
+* `-d ,` means use `,` as the delimiter
+
+## How can I repeat commands?
+There are various ways you can repeat commands in the shell/terminal.
+1. `!<command> ` will re-run the most recent use of that command.
+2. `history` will produce a list of commands plus a serial number of each command. 
+```text
+$ history
+    1  head summer.csv
+    2  cd seasonal
+    3  head summer.csv
+    4  history
+```
+3. `!<serial number>` will run the command attributed to the serial number specified. 
+
+## How can I select lines containing specific values?
+Use the `grep` command along with text and filepath. For example, `grep howdy DataCamp/message.txt` will search for 
+"howdy" in the file message.txt. <br>
+
+The `grep` has lots of useful flags:
+```text
+-c: print a count of matching lines rather than the lines themselves
+-h: do not print the names of files when searching multiple files
+-i: ignore case (e.g., treat "Regression" and "regression" as matches)
+-l: print the names of files that contain matches, not the matches
+-n: print line numbers for matching lines
+-v: invert the match, i.e., only show lines that don't match
+```
+You can search in various files for example: `grep -c incisor seasonal/autumn.csv seasonal/winter.csv`. And you can 
+invert the search, for example: `grep -v -n molar seasonal/spring.csv`.
