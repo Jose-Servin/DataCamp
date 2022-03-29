@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="08f12346-891c-4665-862a-b8e01264cac9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Courses/PP_Intro_Shell/Notes.MD" beforeDir="false" afterPath="$PROJECT_DIR$/Courses/PP_Intro_Shell/Notes.MD" afterDir="false" />
     </list>
@@ -171,7 +170,8 @@
       <workItem from="1647984059311" duration="530000" />
       <workItem from="1648146808574" duration="5360000" />
       <workItem from="1648218409934" duration="6081000" />
-      <workItem from="1648483691391" duration="2679000" />
+      <workItem from="1648483691391" duration="2728000" />
+      <workItem from="1648566081309" duration="2985000" />
     </task>
     <servers />
   </component>

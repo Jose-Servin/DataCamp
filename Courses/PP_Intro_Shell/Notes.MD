@@ -137,3 +137,65 @@ The `grep` has lots of useful flags:
 ```
 You can search in various files for example: `grep -c incisor seasonal/autumn.csv seasonal/winter.csv`. And you can 
 invert the search, for example: `grep -v -n molar seasonal/spring.csv`.
+
+## How to store a commands output in a file?
+To save the output of a command you must redirect it. For example, the following command will save the head of the 
+spring.csv file to a file called top.csv. 
+```shell
+head -n 5 seasonal/spring.csv > top.csv 
+```
+## A better way to combine commands
+Redirection has two major drawbacks. 
+1. it leaves intermediate files 
+2. requires more commands typed out and in the history <br>
+
+To accomplish the same you can use the <strong>pipe</strong> tool. Which tells the terminal to use the output from 
+the left as an input for the command on the right. 
+   
+```shell
+head -n 5 seasonal/winter.csv | tail -n 3
+```
+Example: select the first column of a csv file, remove the header line containing "Date" and select the first 10 
+lines of actual data. 
+```shell
+cut -d , -f 1 path/to_file.csv | grep -v Date | head -n 10 
+```
+## How to count the records in a file?
+The command `wc` "word count" prints the number of characters `-c`, words `-w` and lines `-l`. <br>
+Example:count the number of line/records in `file.csv` have dates in "2017-07"
+```shell
+grep 2017-07 file/path.csv | wc -l 
+```
+## How can I specify many files at once? 
+Use the wildcard character `*` which means "match zero or more characters". <br>
+Example: if you are selecting all files from a directory you can use
+```shell
+cut -d , -f 1 directory/* 
+```
+Or to select all `.csv` files you can,
+```shell
+cut -d , -f 1 directory/*.csv 
+```
+Other wildcards include:
+```text
+? matches a single character, so 201?.txt will match 2017.txt or 2018.txt, but not 2017-01.txt.
+[...] matches any one of the characters inside the square brackets, so 201[78].txt matches 2017.txt or 2018.txt, but not 2016.txt.
+{...} matches any of the comma-separated patterns inside the curly brackets, so {*.txt, *.csv} matches any file whose name ends with .txt or .csv, but not files whose names end with .pdf.
+```
+## How can I sort lines of text?
+Use the `sort` command along with flags `-n` which sort numerically, `-r` which is for reverse order, `-b` ignored 
+leading blanks and `-f` folds cases (case-insensitive). By default, sort will display in ascending order. 
+## How to remove duplicates?
+Using the `uniq` command will remove duplicate lines. Specifically adjacent duplicate lines. 
+## How to save the output of a pipe? 
+You redirect the same way you saved before but ensuring the redirection is done at the end. 
+```shell
+cut -d , -f 2 seasonal/*.csv | grep -v Tooth > teeth-only.txt
+> result.txt head -n 3 seasonal/winter.csv
+```
+## How to stop a programm from running?
+Use the escape command `ctrl + c` to end it. Often written as `^C`. 
+## How to find the file with the shortest amount of lines?
+```shell
+wc -l seasonal/*csv | grep -v total | sort -n | head -n 1
+```
