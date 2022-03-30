@@ -199,3 +199,23 @@ Use the escape command `ctrl + c` to end it. Often written as `^C`.
 ```shell
 wc -l seasonal/*csv | grep -v total | sort -n | head -n 1
 ```
+## Intro to Shell environment variables
+* `HOME` returns user's home directory
+* `PWD` returns present working directory
+* `SHELL` returns which Shell program is being used 
+* `USER` returns the user's ID
+## How to print a variables value
+To print a value use `echo` along with `$` when echoing variables. 
+## How to define and access shell variables
+To define your own shell variables use `variable=path/to_file.csv` and then check with `echo $variable`. 
+## For loop in the terminal
+The syntax for this is `for filetype in gif jpg png; do echo $filetype; done`. <br>
+Also, `for filename in seasonal/*.csv; do echo $filename; done`. 
+```shell
+$ for f in seasonal/*.csv; do echo $f head -n 2 $f | tail -n 1; done
+seasonal/autumn.csv head -n 2 seasonal/autumn.csv
+seasonal/spring.csv head -n 2 seasonal/spring.csv
+seasonal/summer.csv head -n 2 seasonal/summer.csv
+seasonal/winter.csv head -n 2 seasonal/winter.csv
+$
+```
