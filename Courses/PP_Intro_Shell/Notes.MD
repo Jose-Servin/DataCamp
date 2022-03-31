@@ -219,3 +219,29 @@ seasonal/summer.csv head -n 2 seasonal/summer.csv
 seasonal/winter.csv head -n 2 seasonal/winter.csv
 $
 ```
+## How can I edit a file? 
+To access a simple text editor in the terminal use `nano <filename>`. <br>
+```text
+Ctrl + K: delete a line.
+Ctrl + U: un-delete a line.
+Ctrl + O: save the file ('O' stands for 'output'). You will also need to press Enter to confirm the filename!
+Ctrl + X: exit the editor.
+```
+## How to save commands and run later?
+1. First save the commands to a file header.sh.
+```shell
+head -n 1 file/*.csv 
+```
+2. run the command by running the file using `bash`. 
+```shell
+bash header.sh
+```
+## How to write loops in the shell.
+```shell
+# Print the first and last data records of each file.
+for filename in $@
+do
+    head -n 2 $filename | tail -n 1
+    tail -n 1 $filename
+done
+```
