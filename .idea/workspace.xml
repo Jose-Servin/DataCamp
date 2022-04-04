@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="08f12346-891c-4665-862a-b8e01264cac9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Courses/PP_Software_Engineering/Notes.MD" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Courses/PP_Intro_Shell/Notes.MD" beforeDir="false" afterPath="$PROJECT_DIR$/Courses/PP_Intro_Shell/Notes.MD" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -174,7 +174,8 @@
       <workItem from="1648566081309" duration="3044000" />
       <workItem from="1648589663668" duration="59000" />
       <workItem from="1648657833598" duration="986000" />
-      <workItem from="1648739105810" duration="846000" />
+      <workItem from="1648739105810" duration="878000" />
+      <workItem from="1649086603593" duration="2356000" />
     </task>
     <servers />
   </component>
