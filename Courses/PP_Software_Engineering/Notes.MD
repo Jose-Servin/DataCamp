@@ -107,3 +107,54 @@ at an environment level.
 ```shell
 pip3 install .
 ```
+## Adding classes to a package
+First we begin by defining a simple class:
+```python
+class MyClass:
+    """
+    A minimal class example
+    """
+    def __init__(self, value):
+        self.attribute = value
+```
+Next, we add this class to the `__init__.py` file using a relative import statement. 
+```python
+from .my_class import MyClass
+```
+## Adding functionality to classes
+For this example, we are creating a document that will be tokenized. 
+```python
+from tokenize import tokenize
+
+
+class Document:
+    """
+    A minimal class example
+    """
+
+    def __init__(self, text, token_regex=r'[a-zA-Z]+'):
+        self.text = text
+        # adding an underscore to show this method is intended for internal use only
+        self.tokens = self._tokenize()
+
+    def _tokenize(self):
+        return tokenize(self.text)
+
+```
+There are some risks to using non-public methods:
+* Lack of documentation
+* Unpredictability
+
+To summarize, we are using the `tokenize` module as part of our `__init__` method in order to call this method each 
+time  a new `Document` instance is created. 
+
+## Documentation
+Documentation in python can take the form of comments or docstrings. <br>
+
+A good rule to follow is that comments should explain why a line of code is doing something and not what it's doing. 
+Also, no one ever complained about over commented code, only under-commented code causes headaches.  
+* Comments are for yourself and other collaborators
+* Docstrings are for the user
+
+
+
