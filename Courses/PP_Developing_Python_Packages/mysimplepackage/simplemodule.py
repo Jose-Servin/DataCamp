@@ -1,6 +1,9 @@
 """
 A module for counting certain words in a text file.
 """
+import numpy as np
+import pandas as pd
+
 
 def count_words(filepath, words_list):
     """

@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="08f12346-891c-4665-862a-b8e01264cac9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Courses/PP_Developing_Python_Packages/Notes.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Courses/PP_Developing_Python_Packages/mysimplepackage/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Courses/PP_Developing_Python_Packages/mysimplepackage/simplemodule.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Courses/PP_Developing_Python_Packages/run.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Courses/PP_Developing_Python_Packages/setup.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Courses/PP_Developing_Python_Packages/Notes.md" beforeDir="false" afterPath="$PROJECT_DIR$/Courses/PP_Developing_Python_Packages/Notes.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Courses/PP_Developing_Python_Packages/mysimplepackage/simplemodule.py" beforeDir="false" afterPath="$PROJECT_DIR$/Courses/PP_Developing_Python_Packages/mysimplepackage/simplemodule.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -209,7 +210,8 @@
       <workItem from="1649688920623" duration="4211000" />
       <workItem from="1649711096717" duration="292000" />
       <workItem from="1649960405853" duration="4257000" />
-      <workItem from="1649967261845" duration="3114000" />
+      <workItem from="1649967261845" duration="3205000" />
+      <workItem from="1650029545944" duration="7967000" />
     </task>
     <servers />
   </component>
