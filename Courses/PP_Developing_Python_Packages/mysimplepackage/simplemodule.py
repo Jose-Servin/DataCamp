@@ -15,7 +15,6 @@ def count_words(filepath, words_list):
     ----------
     filepath : str
         Path to text file
-        
     words_list : list of str
         Count the total number of appearances of these words.
 

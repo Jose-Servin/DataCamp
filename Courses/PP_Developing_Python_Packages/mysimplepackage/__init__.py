@@ -3,3 +3,4 @@ mysimplepackage is a complete package for counting the number of given words in 
 
 """
 
+from .simplemodule import count_words

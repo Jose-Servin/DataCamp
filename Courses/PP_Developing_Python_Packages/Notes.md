@@ -361,3 +361,181 @@ the terminal and run one of the commands.
    1. `twine upload dist/*`
 2. Upload to TestPyPi
    1. `twine upload -r testpypi dist/*`
+
+# Testing your packages
+Testing should be done in order to increase code coverage. The fundamental blocks of testing are asserting that the 
+code returns a value or performs the action you coded. Tests should be kept in their own directory and should be 
+children of the main project folder. In other words, test folder should be siblings with the package. 
+```text
+PP_Developing_Python_Packages
+├── Notes.md
+├── mysimplepackage
+│   ├── __init__.py
+│   └── simplemodule.py
+├── run.py
+├── setup.py
+└── tests
+```
+## How to structure a test module
+First, we set up a `__init__.py` file in our test directory and for each module in our package we set up 
+`test_<module_name>.py` file. In these files, we import each method that is in that `<module_name>` and test. <br>
+
+Example, our `simplemodule.py` file has one function called `count_words` so, we go into our `test_simplemodule.py` 
+file and set up the following file. Note, we use an absolute import statement.  
+```python
+from mysimplepackage.simplemodule import count_words
+
+
+def test_count_words():
+    assert count_words('/Users/joseservin/Desktop/user_info.txt', ['key', 'words']) == 6
+
+```
+To run our test, we go into the terminal, navigate to the project folder (top of the directory) and run `pytest`. 
+
+<mark> <strong> IMPORTANT NOTE: </strong> </mark> <Br>
+
+You must `Sources Root` your project folder in PyCharm in order to 
+use your package modules in your `tests` directory. 
+
+## Understanding Pytest output
+Pytest will look inside the test directory and run any `.py` files that being with "test." 
+* looks for modules that begin with "test"
+* looks for functions that being with "test"
+
+<img  src="images/Screen Shot 2022-04-16 at 2.10.09 PM.png" alt="Pytest output from DataCamp course"/> 
+
+# Testing your package with different environments
+If we wanted to test our packages using different versions of Python, we would have to download each version plus 
+our packages and dependencies and run pytest. <br>
+
+A better alternative is `tox`. What is tox?
+* designed to run tests with multiple versions of python. 
+
+
+Tox runs from the terminal, but before you run it you must create a configuration file called `tox.ini` located at 
+the top of your directory. This file tells tox what to run in each environment and which Python version to use. 
+
+## What to include in the tox.ini file?
+
+1. First we create the tox heading 
+```text
+[tox]
+```
+2. Specify which versions of Python we want to test by defining the `envlist` parameter. 
+    1. <mark> These version must already be installed in your computer </mark>
+```text
+envlist = py27, py35, py36, py37
+```
+
+3. define `[testenv]` heading and tell tox what you want it to do once it installs your dependencies by using the 
+   `commands` parameter. Here you list the terminal commands tox will run.
+   1. You must first define any tox dependencies using the `deps` parameter. Basically, this is what tox needs in 
+      order to test which will most likely be pytest. 
+   2. more commands can be added besides just "pytest" but they must be shell commands. 
+```text
+[testenv]
+deps = pytest 
+commands =
+    pytest
+```
+## How to run tox
+Navigate to the top of the directory and run the `tox` command. <br>
+
+The `tox` output will look like this: <br>
+
+- First it confirms python version x environment was created and installed the package and it's dependencies. 
+
+
+<img src="images/Screen Shot 2022-04-16 at 2.41.42 PM.png" alt='tox output sc from DataCamp' />
+
+- Next it runs the `commands` defined and repeats for each version in the `envlist` parameter. 
+
+<img src="images/Screen Shot 2022-04-16 at 2.45.11 PM.png" alt="tox output">
+
+- Finally, it shows us a summary of each `envlist` run. 
+
+<img src="images/Screen Shot 2022-04-16 at 2.47.43 PM.png" alt="tox output">
+
+# Keeping your package stylish
+The same way `pytest` is used to find bugs. `flake8` is used to find styling mistakes. Normally, these are 
+under-lined by PyCharm but some can still go un-noticed. <br>
+
+First, we install `flake8` using `pip3 install flake8`. Flake8 is a static code checker that does not run your code. 
+In our terminal we run `python3 -m pip install flake8` and run the following command: 
+```shell
+flake8 simplemodule.py
+```
+Output:
+```text
+Last login: Sat Apr 16 15:24:39 on ttys001
+joseservin@Joses-MBP ~ % flake8 /Users/joseservin/DataCamp/Courses/PP_Developing_Python_Packages/mysimplepackage/simplemodule.py
+/Users/joseservin/DataCamp/Courses/PP_Developing_Python_Packages/mysimplepackage/simplemodule.py:4:1: F401 'numpy as np' imported but unused
+/Users/joseservin/DataCamp/Courses/PP_Developing_Python_Packages/mysimplepackage/simplemodule.py:5:1: F401 'pandas as pd' imported but unused
+joseservin@Joses-MBP ~ % 
+```
+## Bending the rules of flake8
+We set up a `.py` file called `formatting_vars.py` where we commit a flake8 violation (E222). 
+```python
+var_1 =     6 ** 4 + 1
+var_3 = 10 ** 4 + 1
+```
+Running `flake8 <path to file> `:
+```text
+/formatting_vars.py:1:8: E222 multiple spaces after operator
+```
+We can place a `#noqa` after this line which stands for "no quality assurance". 
+```python
+var_1 =     6 ** 4 + 1 #noqa
+var_3 = 10 ** 4 + 1
+```
+We can also place a `# noqa: E222` to specify specific flake8 violations.
+```python
+var_1 =     6 ** 4 + 1;  #noqa: E222
+var_3 = 10 ** 4 + 1
+```
+which returns: 
+```text
+/formatting_vars.py:1:23: E703 statement ends with a semicolon
+```
+## Flake8 flags
+
+A better alternative is to use flake8 flags in the terminal command.  <br>
+
+* To ignore a violation use the `--ignore` flag: 
+
+```python
+var_1 =     6 ** 4 + 1
+var_3 = 10 ** 4 + 1
+```
+So, for the instance where there are multiple spaces after the operator we can use `flake8 --ignore E222 <path to file>`
+
+* To only see certain violations use the `--select` flag:
+```python
+var_1 =     6 ** 4 + 1
+var_3 = 10 ** 4 + 1;
+```
+First we see all violations:
+```text
+/Users/joseservin/DataCamp/Courses/PP_Developing_Python_Packages/mysimplepackage/formatting_vars.py:1:8: E222 multiple spaces after operator
+/Users/joseservin/DataCamp/Courses/PP_Developing_Python_Packages/mysimplepackage/formatting_vars.py:2:20: E703 statement ends with a semicolon
+```
+Now we are only interested in E703 violations:
+```text
+flake8 --select E703 <path to file>
+```
+```text
+/formatting_vars.py:2:20: E703 statement ends with a semicolon
+```
+## Creating a setup.cfg file
+We can store the setting for flake8 by setting up a `setup.cfg` file at the top of your directory. Here, any 
+`ignore` violations defined will be ignored in all modules. 
+```text
+[flake8]
+
+ignore = E222
+exclude = setup.py
+
+per-file-ignores = 
+    <path to file>: <violation code> 
+```
+Now, you run `flake8 <path to top of directory>`. 
