@@ -539,3 +539,71 @@ per-file-ignores =
     <path to file>: <violation code> 
 ```
 Now, you run `flake8 <path to top of directory>`. 
+
+# Package development with templates 
+Package developments contains lots of files which can become confusing. In order to make this developement faster, 
+we can use `cookiecutter` and streamline the package/file creation process. <br>
+
+In your terminal run `cookiecutter https://github.com/audreyr/cookiecutter-pypackage` and fill in the information. <br>
+Note that some info is not needed so refer back to DataCamp's course 
+[video](https://campus.datacamp.com/courses/developing-python-packages/rapid-package-development?ex=1).
+
+# Version numbers and history
+
+* `CONTRIBUTING.md` 
+  * Invites other developers to work on your package
+  * Tells them how to get started; by convention this is your contact info, so they can get in touch with you
+* `HISTORY.md`
+  * also knows as "history, changelog or release notes"
+  * tells users what has changed between versions 
+
+```markdown
+# History
+
+## 0.3.0
+### Changed
+- some function was changed
+### Deprecated 
+- support for 0.2.7 has ended 
+- module.function has been removed
+### Fixed
+- fixed bug causing error
+### Added 
+- function name now available 
+
+## 0.2.7
+
+```
+
+## Version Numbers
+You should increase version number when your package is ready for a new release. <br>
+
+The two places the version number need to be updated at is:
+1. `setup.py` file 
+2. package `__init__.py` file 
+   1. `__version__ = 0.1.0` is added at the top of the `__init__.py` file after the comment section
+
+<img src="images/Screen Shot 2022-04-17 at 4.25.11 PM.png" alt="version number updates">
+
+A tool to help increase versions is the `bumpversion` tool from Python. This command runs at the top of your package 
+directory. All you have to do is specify if it's `major`, `minor` or `patch`. 
+```text
+pip install --upgrade bumpversion
+```
+
+# Makefiles and Classifiers 
+
+## Classifiers
+Inside the `setup.py` file `cookiecutter` sets up classifiers which is a list of categories for each release of your 
+package. Users on PyPi can filter based on classifiers and find packages. <br>
+
+<img src="images/Screen Shot 2022-04-17 at 4.38.22 PM.png" alt="classifiers image">
+
+## Makefile
+This is where all the terminal commands are kept. <br>
+
+To run a `makefile` command you use `make <function name>` in the terminal. To see all the commands in the makefile 
+you use the `make help` command.  
+
+<img src="images/Screen Shot 2022-04-17 at 4.40.41 PM.png" alt="makefile content">
+
