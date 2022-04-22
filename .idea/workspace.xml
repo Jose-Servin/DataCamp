@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="08f12346-891c-4665-862a-b8e01264cac9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/DataCamp.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/DataCamp.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Courses/PP_Unit_Testing/images/Screen Shot 2022-04-22 at 2.28.24 PM.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Courses/PP_Developing_Python_Packages/mysimplepackage/simplemodule.py" beforeDir="false" afterPath="$PROJECT_DIR$/Courses/PP_Developing_Python_Packages/mysimplepackage/simplemodule.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Courses/PP_Developing_Python_Packages/tests/test_simplemodule.py" beforeDir="false" afterPath="$PROJECT_DIR$/Courses/PP_Developing_Python_Packages/tests/test_simplemodule.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Courses/PP_Unit_Testing/Notes.md" beforeDir="false" afterPath="$PROJECT_DIR$/Courses/PP_Unit_Testing/Notes.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -46,6 +48,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="exceleditor.install" value="true" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
@@ -54,7 +57,7 @@
       <recent name="$PROJECT_DIR$/Courses/PP_Developing_Python_Packages/images" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.test_simplemodule">
+  <component name="RunManager" selected="Python.simplemodule">
     <configuration name="my_script" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="DataCamp" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -167,9 +170,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.simplemodule" />
         <item itemvalue="Python.test_simplemodule" />
         <item itemvalue="Python.run" />
-        <item itemvalue="Python.simplemodule" />
         <item itemvalue="Python.my_script" />
         <item itemvalue="Python.pywiki_main" />
       </list>
@@ -270,7 +273,14 @@
       <workItem from="1650228604422" duration="3281000" />
       <workItem from="1650393211421" duration="1929000" />
       <workItem from="1650408660357" duration="789000" />
-      <workItem from="1650410435309" duration="402000" />
+      <workItem from="1650410435309" duration="535000" />
+      <workItem from="1650470256522" duration="165000" />
+      <workItem from="1650472755025" duration="289000" />
+      <workItem from="1650478970719" duration="87000" />
+      <workItem from="1650639691842" duration="586000" />
+      <workItem from="1650640458547" duration="3974000" />
+      <workItem from="1650651754509" duration="3919000" />
+      <workItem from="1650657892083" duration="1705000" />
     </task>
     <servers />
   </component>
@@ -291,7 +301,7 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/DataCamp$pywiki_run.coverage" NAME="pywiki_run Coverage Results" MODIFIED="1647720941496" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Courses/PP_Web_Scrapping" />
     <SUITE FILE_PATH="coverage/DataCamp$run.coverage" NAME="run Coverage Results" MODIFIED="1650128456532" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Courses/PP_Developing_Python_Packages" />
-    <SUITE FILE_PATH="coverage/DataCamp$simplemodule.coverage" NAME="simplemodule Coverage Results" MODIFIED="1650126974914" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Courses/PP_Developing_Python_Packages/mysimplepackage" />
+    <SUITE FILE_PATH="coverage/DataCamp$simplemodule.coverage" NAME="simplemodule Coverage Results" MODIFIED="1650655957055" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Courses/PP_Developing_Python_Packages/mysimplepackage" />
     <SUITE FILE_PATH="coverage/DataCamp$pywiki_main.coverage" NAME="pywiki_main Coverage Results" MODIFIED="1647721652526" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Courses/PP_Web_Scrapping" />
     <SUITE FILE_PATH="coverage/DataCamp$test_simplemodule.coverage" NAME="test_simplemodule Coverage Results" MODIFIED="1650130165866" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Courses/PP_Developing_Python_Packages/tests" />
     <SUITE FILE_PATH="coverage/DataCamp$my_script.coverage" NAME="my_script Coverage Results" MODIFIED="1649691440128" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Courses/PP_Software_Engineering/working_directory" />

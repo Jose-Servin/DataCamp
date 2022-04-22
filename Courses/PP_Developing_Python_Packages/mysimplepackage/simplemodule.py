@@ -1,6 +1,8 @@
 """
 A module for counting certain words in a text file.
 """
+import math
+
 import numpy as np
 import pandas as pd
 
@@ -31,3 +33,12 @@ def count_words(filepath, words_list):
         if word.lower() in words_list:
             n += 1
     return n
+
+
+def add_floats(float_1, float_2):
+    return float_1 + float_2
+
+
+def simple_sqrt(num):
+    answer = math.sqrt(num)
+    return answer
