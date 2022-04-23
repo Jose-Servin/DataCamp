@@ -134,3 +134,93 @@ Once we have tested for these arguments types, our function can be considered we
 
 ## Test Driven Development (TDD)
 More research needs to be done over this topic. 
+
+## How to organize tests
+<img src="images/Screen Shot 2022-04-23 at 10.59.43 AM.png" alt="test suite organization">
+
+General Rules:
+* For each `my_module.py` there should be a `test_my_module.py` file. 
+* Test classes serve as a container for a single unit's test function. In other words, a test class is a container for 
+all the tests of a specific function. 
+
+Before implementing Test Classes our code looks like the following:
+```python
+import math
+import pytest
+from mysimplepackage.simplemodule import count_words, add_floats, simple_sqrt
+
+def test_count_words():
+    actual = count_words('/Users/joseservin/Desktop/user_info.txt', ['key', 'words'])
+    expected = 6
+    message = f"""
+        count_words('/Users/joseservin/Desktop/user_info.txt', ['key', 'words']) returned {actual} instead of 
+        {expected}.
+    """
+    assert actual is expected, message
+
+def test_add_floats():
+    actual = add_floats(0.1, 0.2)
+    expected = pytest.approx(0.3)
+    message = f"""
+        add_floats(0.1, 0.2) returns {actual} instead of {expected} 
+    """
+
+    assert actual == expected, message
+    # here we will add a test for the return value type
+    assert isinstance(actual, float)
+    # here we will add a test for the expected value
+    assert expected == 0.3
+
+def test_valueerror_simple_sqrt():
+    example_argument = -10
+    with pytest.raises(ValueError) as exception_info:
+        simple_sqrt(example_argument)
+    # Check if ValueError contains the correct message
+    assert exception_info.match("math domain error")
+```
+
+After implementing Test Classes to better organize individual function tests our code looks like the following: 
+```python
+import math
+import pytest
+from mysimplepackage.simplemodule import count_words, add_floats, simple_sqrt
+
+
+class TestCountWords(object):
+    def test_correct_file(self):
+        self.actual = count_words('/Users/joseservin/Desktop/user_info.txt', ['key', 'words'])
+        self.expected = 6
+        self.message = f"""
+                count_words('/Users/joseservin/Desktop/user_info.txt', ['key', 'words']) returned {self.actual} instead of 
+                {self.expected}.
+            """
+        assert self.actual is self.expected, self.message
+
+```
+## Mastering Test Execution 
+Pytest makes it easy to run all test in the test folder. To do this, `cd` into the `tests` folder and run the 
+`pytest` command. <br>
+
+How does Pytest run the test?
+1. Recurses into directory subtree of `tests/`
+2. Finds all `.py` files starting with `test` (test module)
+3. In these files, it finds all Classnames starting with `Test` (test class)
+4. Runs all functions that start with `test_` (unit test)
+
+When running the `pytest` command once inside the `tests` subdirectory, you can add the `pytest -x` flag which stops 
+pytest running session after the first failure. And, to mention again, we can run a specific module by using the 
+command `pytest <path to test module>` like we've always done before. 
+### Running a particular test class
+In order to run particular test class, we must introduce Node ID's. <br>
+* Node ID of a test class: `<path to test module>`::`<test class name>`
+* Node ID of a unit test: `<path to test moduel>`::`<test class name>`::`<unit test name>`
+
+To use Node ID's in a pytest command use `pytest data/test_processing.py::TestRowInt`
+
+### Running test using keyword expressions
+To use a keyword expression with your pytest command use the `-k` flag followed by a text pattern. So if you only 
+want to run the class named `TestSomeFunction` you will use the command `pytest -k "TestSomeFunction"` <br>
+
+We can also use Python's logical operators when running test. For example, if we want to run all the test inside the 
+test class `TestSomeFunctino` but not the unit test called `test_find_pattern` we can use the following command with 
+pytest `pytest -k "TestSomeFunction and not test_find_patter"`. 
