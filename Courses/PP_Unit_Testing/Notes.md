@@ -224,3 +224,97 @@ want to run the class named `TestSomeFunction` you will use the command `pytest 
 We can also use Python's logical operators when running test. For example, if we want to run all the test inside the 
 test class `TestSomeFunctino` but not the unit test called `test_find_pattern` we can use the following command with 
 pytest `pytest -k "TestSomeFunction and not test_find_patter"`. 
+
+## Expected failures and conditional skipping 
+Sometimes we want unit test to fail but do not want to give a false alarm. To flag a unit test as an expected fail 
+we use the `xfail` mark to mark the test as "expected to fail." First we make the following changes to our 
+`test_simplemodule.py` file:
+```python
+import math
+import pytest
+from mysimplepackage.simplemodule import count_words, add_floats, simple_sqrt
+
+
+class TestCountWords(object):
+    def test_correct_file(self):
+        self.actual = count_words('/Users/joseservin/Desktop/user_info.txt', ['key', 'words'])
+        self.expected = 6
+        self.message = f"""
+                count_words('/Users/joseservin/Desktop/user_info.txt', ['key', 'words']) returned {self.actual} instead of 
+                {self.expected}.
+            """
+        assert self.actual is self.expected, self.message
+
+    # Add test that returns exception when word counts do not match
+
+    # Add test that is expected to fail
+    @pytest.mark.xfail(reason="testing an expected fail")
+    def test_expected_failure(self):
+        self.actual = None
+
+        assert self.actual is not None
+```
+After adding this decorator and running `pytest` we get the following results back:
+```text
+collected 2 items                                                              
+
+DataCamp/Courses/PP_Developing_Python_Packages/tests/test_simplemodule.py . [ 50%]
+x                                                                        [100%]
+
+========================= 1 passed, 1 xfailed in 0.28s =========================
+```
+We can also add a reason to the xfail test and view the reasons in the terminal pytest command using the `pytest -rx`
+flag. 
+```text
+collected 3 items                                                              
+
+DataCamp/Courses/PP_Developing_Python_Packages/tests/test_simplemodule.py . [ 33%]
+xs                                                                       [100%]
+
+=========================== short test summary info ============================
+XFAIL DataCamp/Courses/PP_Developing_Python_Packages/tests/test_simplemodule.py::TestCountWords::test_expected_failure
+  Testing an expected fail
+=================== 1 passed, 1 skipped, 1 xfailed in 0.27s ====================
+```
+
+Sometimes we have expected failures due to certain conditions such as 
+* code only works on certain Python versions 
+* code does not work on Windows
+
+To achieve this we use the `@pytest.mark.skipif(boolean_expression, reason)`. 
+```python
+# Hypothetically adding a function that only works with Python 2.7 or lower
+    @pytest.mark.skipif(sys.version_info > (2, 7), reason="requires Python 2.7")
+    def test_conditional_skip(self):
+        """Only runs on Python 2.7 or lower"""
+        self.actual = True
+
+        assert self.actual
+```
+When we run these test we get:
+```text
+collected 3 items                                                              
+
+DataCamp/Courses/PP_Developing_Python_Packages/tests/test_simplemodule.py . [ 33%]
+xs                                                                       [100%]
+
+=================== 1 passed, 1 skipped, 1 xfailed in 0.27s ====================
+```
+We can see the reason for these skips using the `pytest -rs` flag:
+```text
+collected 3 items                                                              
+
+DataCamp/Courses/PP_Developing_Python_Packages/tests/test_simplemodule.py . [ 33%]
+xs                                                                       [100%]
+
+=========================== short test summary info ============================
+SKIPPED [1] DataCamp/Courses/PP_Developing_Python_Packages/tests/test_simplemodule.py:27: requires Python 2.7
+=================== 1 passed, 1 skipped, 1 xfailed in 0.27s ====================
+```
+
+To view both `xfail` and `skipif` reason message we use the `pytest -rsx` command. 
+
+We are also able to appy these expected failures and conditional skipping to Test Classes as seen below:
+<img src="images/Screen Shot 2022-04-23 at 6.23.43 PM.png" alt="skipping test classes">
+
+## Continuous integration and code coverage 
