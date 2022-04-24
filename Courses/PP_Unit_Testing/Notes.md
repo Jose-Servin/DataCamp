@@ -318,3 +318,51 @@ We are also able to appy these expected failures and conditional skipping to Tes
 <img src="images/Screen Shot 2022-04-23 at 6.23.43 PM.png" alt="skipping test classes">
 
 ## Continuous integration and code coverage 
+###Build Status Badge: 
+Uses a continuous integration server to run all tests automatically whenever we push a commit 
+to GitHub. The badge itself shows whether tests are currently passing or failing. 
+
+A common CI Servers is 
+[Travis CI](https://www.travis-ci.com/?_gl=1%2A1x5ghqo%2A_ga%2AMjE0NDc0NjEwOS4xNjUwODIwODgw%2A_ga_XRYGSZFQ0P%2AMTY1MDgyMDg3OS4xLjAuMTY1MDgyMDg3OS42MA..)
+
+To integrate with Travis CI we must follow these steps:
+1. Create a configuration file at the same level as our `src` and `tests` subdirectories.
+
+<img src="images/Screen Shot 2022-04-24 at 12.23.41 PM.png" alt="step 1 of CI integration">
+
+2. Define the contents of your `.travis.yml` file with the following:
+
+<img src="images/Screen Shot 2022-04-24 at 12.25.58 PM.png" alt="contents of travis ci config page">
+
+3. Push file to GitHub
+```text
+git add .travis.yml
+git push origin master
+```
+4. Go to GitHub, click on Marketplace and install `Travis CI` app. 
+5. Allow the `Travis CI` app access to necessary repos and/or organizations. 
+6. You will be redirected to Travis CI's login in page and be presented with a dashboard. 
+7. From now on, whenever you push a commit to the GitHub repo, we should see a build appearing on the Travis CI 
+   dashboard. 
+8. Click on Badge, choose `markdown` and paste Markdown in the `README` file on GitHub. 
+
+### Code Coverage Badge
+The code coverage badge represents:
+```text
+(number of lines of code ran during testing /  total number of lines) * 100 
+```
+High percentages (75% or above) represent well tested code.
+ <br>
+
+The badge comes from a service called [Codecov](https://about.codecov.io/).
+
+To install `Codecov` follow the following steps:
+1. Modify the Travis CI configuration file
+
+<img src="images/Screen Shot 2022-04-24 at 12.38.17 PM.png" alt="modified config file">
+
+2.Install the Codecov app via GitHub Marketplace.
+
+3. Each new commit will now show up as a code coverage report in Codecov. 
+
+4. In Codecov page, go to Badge --> Settings and paste Markdown in the GitHub `README` file. 
