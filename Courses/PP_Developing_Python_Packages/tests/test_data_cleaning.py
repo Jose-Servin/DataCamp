@@ -7,8 +7,7 @@ import csv
 
 @pytest.fixture
 def raw_and_clean_data_file():
-
-    #Setup process
+    # Setup process
     raw_data_path = '/Users/joseservin/DataCamp/Courses/PP_Developing_Python_Packages/raw_data.csv'
     clean_data_path = '/Users/joseservin/DataCamp/Courses/PP_Developing_Python_Packages/clean_data.csv'
 
@@ -16,14 +15,14 @@ def raw_and_clean_data_file():
 
     rows = [
         {
-            'A':'Good',
-            'B':'Good',
-            'C':'Good'
+            'A': 'Good',
+            'B': 'Good',
+            'C': 'Good'
         },
         {
-            'A':'Good',
-            'B':'Good',
-            'C':'Good'
+            'A': 'Good',
+            'B': 'Good',
+            'C': 'Good'
         },
         {
             'A': 'Good',

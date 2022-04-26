@@ -489,3 +489,4 @@ We can use the `tmpdir` fixture to follow this process:
 4. tear down fixture function 
 5. tear down `tmpdir`
 
+More research is needed. Info can be found [here](https://docs.pytest.org/en/6.2.x/tmpdir.html).
