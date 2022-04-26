@@ -366,3 +366,126 @@ To install `Codecov` follow the following steps:
 3. Each new commit will now show up as a code coverage report in Codecov. 
 
 4. In Codecov page, go to Badge --> Settings and paste Markdown in the GitHub `README` file. 
+
+## Beyond assertion: setup and teardown
+There will be some functions that require more than simple `assert` statements. For example, image we have a 
+function called `preprocess(raw_data_file_path, clean_data_file_path)`. This function introduces us to the two 
+concepts of `Enviornment Precondition` and `Enviornment Modification`. 
+* Environment Precondition is the presence of a raw data file in the environment in order for this function to run.
+* Environment Modification is the new file created after the data is cleaned. 
+
+With these type of functions, the new testing workflow is `setup --> assert --> teardown`. In Pytest, the setup and 
+teardown is placed outside the test in a function called `fixture` which has the `@pytest.fixture` decorator. 
+
+* Setup: Setup brings the environment to a state where testing can begin. 
+* Teardown brings environment to initial state
+
+Quick help: how to fix [PermissionError: Erron 13](https://itsmycode.com/python-permissionerror-errno-13-permission-denied/)
+
+### preprocess() function
+First let's take a look at the `preprocess()` function:
+```python
+def preprocess(raw_data_file_path, clean_data_file_path):
+    """remove the last row of a csv file"""
+
+    raw_data = pd.read_csv(raw_data_file_path, index_col=None)
+
+    clean_data = remove_last_row(raw_data)
+
+    clean_data.to_csv(clean_data_file_path, index=False)
+```
+
+This function takes a `raw_data_file_path` and `clean_data_file_path`. Inside the function, we call the 
+`remove_last_row` function which is defined as:
+```python
+def remove_last_row(df):
+    new_df = df.drop(df.tail(1).index)
+    return new_df
+```
+This function removed the last row from a dataframe. <br>
+
+Next, we want to test this function.
+
+### my_fixture()
+Our `fixture` function looks like this:
+```python
+@pytest.fixture
+def raw_and_clean_data_file():
+
+    #Setup process
+    raw_data_path = '/Users/joseservin/DataCamp/Courses/PP_Developing_Python_Packages/raw_data.csv'
+    clean_data_path = '/Users/joseservin/DataCamp/Courses/PP_Developing_Python_Packages/clean_data.csv'
+
+    fieldnames = ['A', 'B', 'C']
+
+    rows = [
+        {
+            'A':'Good',
+            'B':'Good',
+            'C':'Good'
+        },
+        {
+            'A':'Good',
+            'B':'Good',
+            'C':'Good'
+        },
+        {
+            'A': 'Good',
+            'B': 'Good',
+            'C': 'Good'
+        },
+        {
+            'A': 'Bad',
+            'B': 'Bad',
+            'C': 'Bad'
+        },
+
+    ]
+
+    with open(raw_data_path, mode='w', newline='') as raw_csv_file:
+        writer = csv.DictWriter(raw_csv_file, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerows(rows)
+
+    # yield data
+    yield raw_data_path, clean_data_path
+
+    # Teardown 
+    os.remove(raw_data_path)
+    os.remove(clean_data_path)
+```
+
+This is the `@pytest.fixture` function process:
+1. Setup creates the `raw_data_path` and `clean_data_path`.
+2. Define the contents of the `raw_data_path` file and create it. 
+3. `yield` the data file paths to be used in the unit test. 
+4. Teardown the files to return the environment to its original state. 
+
+Now that we have our `fixture` function we can build our `pytest`:
+```python
+def test_on_data(raw_and_clean_data_file):
+    raw_path, clean_path = raw_and_clean_data_file
+    preprocess(raw_path, clean_path)
+
+    with open(clean_path) as clean_csv_file:
+        last_line = clean_csv_file.readlines()[-1].strip()
+
+    actual = last_line
+    expected = 'Good,Good,Good'
+    message = f"The actual row data is {actual} and the expected is {expected}"
+
+    assert actual == expected, message
+```
+Here is this process broken down:
+1. we use the `raw_and_clean_data_file` function as a parameter for our `test_` unit test. 
+2. Run our `preproess` function. 
+3. Open clean file and verify the content of the file using `assert` statements. 
+
+## Built-in tmpdir fixture
+We can use the `tmpdir` fixture to follow this process:
+1. setup of `tmpdir`
+2. setup fixture function 
+3. test
+4. tear down fixture function 
+5. tear down `tmpdir`
+

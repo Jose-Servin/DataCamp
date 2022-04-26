@@ -2,7 +2,8 @@
 A module for counting certain words in a text file.
 """
 import math
-
+import pytest
+import os
 import numpy as np
 import pandas as pd
 
