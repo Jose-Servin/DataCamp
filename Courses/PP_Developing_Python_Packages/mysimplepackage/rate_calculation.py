@@ -1,4 +1,5 @@
 import pandas as pd
+import time
 
 # build DataFrame
 charges = {
@@ -31,10 +32,13 @@ def calculate_final_rate():
 
 
 # new function to mock
-def grab_next_value(df):
-    """
-    Here we will introduce a bug that grabs the wrong value from DF to learn more about Mocking.
-    We will grab the first row, second column value since this can be a common mistake encountered.
-    """
-    value = df.iloc[0, 1]
-    return value
+
+def api_call():
+    time.sleep(3)
+
+    return 9
+
+
+def slow_function():
+    api_result = api_call()
+    return api_result
