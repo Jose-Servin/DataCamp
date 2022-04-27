@@ -490,3 +490,17 @@ We can use the `tmpdir` fixture to follow this process:
 5. tear down `tmpdir`
 
 More research is needed. Info can be found [here](https://docs.pytest.org/en/6.2.x/tmpdir.html).
+
+## Mocking
+In our defined `preprocess` function, there is a function nested inside that must run with no bugs so that 
+Pytest show a passing result. Otherwise, we will get a failing result for `preprocess` even though it does not have 
+any bugs; the bugs come from `remove_last_row`. <br>
+
+Mocking: testing functions independently of dependencies. <br>
+
+There are two packages we will need:
+1. `pytest-mock`
+2. `unittest.mock`
+
+The basic idea of mocking is to replace potentially buggy dependencies with `unittest.mock.MagicMock()` but only 
+during testing. 
