@@ -492,10 +492,92 @@ We can use the `tmpdir` fixture to follow this process:
 More research is needed. Info can be found [here](https://docs.pytest.org/en/6.2.x/tmpdir.html).
 
 ## Mocking
-In our defined `preprocess` function, there is a function nested inside that must run with no bugs so that 
-Pytest show a passing result. Otherwise, we will get a failing result for `preprocess` even though it does not have 
-any bugs; the bugs come from `remove_last_row`. <br>
+To practice mocking, we will create a new `.py` module containing a process function and a helper function. 
+`rate_calculation.py` contains the following:
+```python
+import pandas as pd
 
+# build DataFrame
+charges = {
+    'Fee': [8, 4, 2, 7],
+    'Courses': ["Spark", "PySpark", "Python", "pandas"],
+    'Duration': ['30days', '40days', '35days', '50days'],
+    'Discount': [1000, 2300, 1200, 2000]
+}
+index_labels = ['r1', 'r2', 'r3', 'r4']
+data_df = pd.DataFrame(charges, index=index_labels)
+
+
+# helper function
+def grab_value(df):
+    """ grab first column first row value from DF
+
+    Here we will introduce a bug that grabs the wrong value from DF to learn more about Mocking.
+
+    We will grab the first row, second column value since this can be a common mistake encountered.
+
+    """
+    value = df.iloc[0, 1]
+    return value
+
+
+# process function
+def calculate_final_rate():
+    """Classify value from helper function"""
+    value = grab_value(data_df)
+    if value < 10:
+        return "Rate too low"
+    else:
+        return "Rate approved"
+```
+
+When running the `calculate_final_rate()` function we get `TypeError: '<' not supported between instances of 'str' 
+and 'int'` because we are incorrectly indexing the DataFrame we defined. `[0,1]` gets the first row second column, 
+we need the first row, first column. So to summarize:
+* `[0,1]` returns a string 
+* `[0,0]` returns an int
+
+When we run the `test_rate_calculation.py` file we get:
+```text
+collected 1 item                                                               
+
+DataCamp/Courses/PP_Developing_Python_Packages/tests/test_rate_calculation.py F [100%]
+
+=================================== FAILURES ===================================
+_________________ TestFinalRateCalc.test_calculate_final_rate __________________
+
+self = <tests.test_rate_calculation.TestFinalRateCalc object at 0x123da38e0>
+build_df =     Fee  Courses Duration  Discount
+r1    8    Spark   30days      1000
+r2    4  PySpark   40days      2300
+r3    2   Python   35days      1200
+r4    7   pandas   50days      2000
+
+    def test_calculate_final_rate(self, build_df):
+        data_df = build_df
+    
+>       actual = calculate_final_rate()
+
+DataCamp/Courses/PP_Developing_Python_Packages/tests/test_rate_calculation.py:26: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def calculate_final_rate():
+        """Classify value from helper function"""
+        value = grab_value(data_df)
+>       if value < 10:
+E       TypeError: '<' not supported between instances of 'str' and 'int'
+
+DataCamp/Courses/PP_Developing_Python_Packages/mysimplepackage/rate_calculation.py:31: TypeError
+=========================== short test summary info ============================
+FAILED DataCamp/Courses/PP_Developing_Python_Packages/tests/test_rate_calculation.py::TestFinalRateCalc::test_calculate_final_rate
+============================== 1 failed in 0.88s ===============================
+```
+
+What we see here is our `test_calculate_final_rate()` function failing BUT ONLY BECAUSE our `grab_value()` function 
+contains a bug. This goes against the whole purpose of testing since test results should indicate bugs in the 
+function under test not dependencies. 
+
+### Mocking Process
 Mocking: testing functions independently of dependencies. <br>
 
 There are two packages we will need:
@@ -503,4 +585,13 @@ There are two packages we will need:
 2. `unittest.mock`
 
 The basic idea of mocking is to replace potentially buggy dependencies with `unittest.mock.MagicMock()` but only 
-during testing. 
+during testing. The theoretical structure of the `mocker.patch("dependency name with module name")`. The `mocker.
+patch()` method returns a `unittest.mock.MagicMock()` object which we store in the variable `grab_value_mock`. <br>
+
+During the test, `grab_value()` can be programmed to be a bug-free method. We call this bug-free version 
+`grab_value_bug_free()`. Reminder that this only has to be bug-free in the context of the test environment so it can 
+be much simpler. What we want this bug-free function to do is return the value we are looking for. 
+
+
+
+

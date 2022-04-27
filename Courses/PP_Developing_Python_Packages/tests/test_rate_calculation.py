@@ -1,6 +1,6 @@
 import pandas as pd
 import pytest
-from mysimplepackage.rate_calculation import grab_value, calculate_final_rate
+from mysimplepackage.rate_calculation import grab_value, calculate_final_rate, grab_next_value
 
 
 class TestFinalRateCalc(object):
@@ -29,6 +29,15 @@ class TestFinalRateCalc(object):
 
         message = f"The expected value was {expected} and the actual value is {actual}"
 
+    def test_grab_next_value_mock(self, build_df, mocker):
+        data_df = build_df
+
+        mocker.patch("mysimplepackage.rate_calculation.grab_next_value", return_value=4)
+
+        actual = calculate_final_rate()
+
+        expected = "Rate too low"
+
+        message = f"The expected value was {expected} and the actual value is {actual}"
+
         assert actual == expected, message
-
-

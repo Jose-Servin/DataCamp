@@ -15,12 +15,8 @@ data_df = pd.DataFrame(charges, index=index_labels)
 def grab_value(df):
     """ grab first column first row value from DF
 
-    Here we will introduce a bug that grabs the wrong value from DF to learn more about Mocking.
-
-    We will grab the first row, second column value since this can be a common mistake encountered.
-
     """
-    value = df.iloc[0, 1]
+    value = df.iloc[0, 0]
     return value
 
 
@@ -33,3 +29,12 @@ def calculate_final_rate():
     else:
         return "Rate approved"
 
+
+# new function to mock
+def grab_next_value(df):
+    """
+    Here we will introduce a bug that grabs the wrong value from DF to learn more about Mocking.
+    We will grab the first row, second column value since this can be a common mistake encountered.
+    """
+    value = df.iloc[0, 1]
+    return value
