@@ -593,5 +593,63 @@ During the test, `grab_value()` can be programmed to be a bug-free method. We ca
 be much simpler. What we want this bug-free function to do is return the value we are looking for. 
 
 
+## Testing Models
+Now we will move onto training models. For this example, we've created a `train_model` function that takes 
+`training_set` as an argument. This `training_set` contains areas in the first column and prices in the second 
+column. <br>
+
+For all models, it is hard to perform tests because we don't know the return value. Therefore, we can take two 
+approches:
+1. Use dataset where return value is known.
+
+
+To use a dataset where the return value is knows, build an array that contains the slope and intercept you would 
+like. For example:
+```python
+class TestModels(object):
+    def test_train_model(self):
+        test_argument = np.array(
+            [
+                [1.0, 3.0],
+                [2.0, 5.0],
+                [3.0, 7.0]
+            ]
+        )
+        expected_slope = 2.0
+        expected_intercept = 1.0
+
+        slope, intercept = train_model(test_argument)
+        assert slope == pytest.approx(expected_slope)
+        assert intercept == pytest.approx(expected_intercept)
+```
+
+2. Use inequalities
+
+To use inequalities means to take a return value and `assert` it is (all possible inequalities) compared to a value. 
+If we have a positively correlated dataset, we can be use the slope will be positive so we can use the assert 
+statement `slope > 0` to test this. 
+
+For example: 
+```python
+    def test_on_positive_correlated_data(self):
+        test_argument = np.array(
+            [
+                [1.0, 4.0], [2.0, 4.0],
+                [3.0, 9.0], [4.0, 10.0],
+                [5.0, 7.0], [6.0, 13.0],
+            ]
+        )
+
+        slope, intercept = train_model(test_argument)
+
+        assert slope > 0
+```
+
+### Recommendations
+* Do not leave models untested just because they are complex.
+* Perform as many sanity checks as possible.
+
+## Testing Plots
+
 
 

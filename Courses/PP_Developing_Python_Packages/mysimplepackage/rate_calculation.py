@@ -32,7 +32,6 @@ def calculate_final_rate():
 
 
 # new function to mock
-
 def api_call():
     time.sleep(3)
 
