@@ -32,12 +32,19 @@ def calculate_final_rate():
 
 
 # new function to mock
-def api_call():
-    time.sleep(3)
+def next_value(df):
+    """
+    here we are introducing a bug by grabbing the wrong value.
+    """
+    value = df.iloc[0, 1]
+    return value
 
-    return 9
 
-
-def slow_function():
-    api_result = api_call()
-    return api_result
+# process function
+def calculate_next_final_rate():
+    """Classify value from helper function"""
+    value = next_value(data_df)
+    if value < 10:
+        return "Rate too low"
+    else:
+        return "Rate approved"

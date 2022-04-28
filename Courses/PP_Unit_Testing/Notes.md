@@ -496,6 +496,7 @@ To practice mocking, we will create a new `.py` module containing a process func
 `rate_calculation.py` contains the following:
 ```python
 import pandas as pd
+import time
 
 # build DataFrame
 charges = {
@@ -512,12 +513,8 @@ data_df = pd.DataFrame(charges, index=index_labels)
 def grab_value(df):
     """ grab first column first row value from DF
 
-    Here we will introduce a bug that grabs the wrong value from DF to learn more about Mocking.
-
-    We will grab the first row, second column value since this can be a common mistake encountered.
-
     """
-    value = df.iloc[0, 1]
+    value = df.iloc[0, 0]
     return value
 
 
@@ -529,51 +526,69 @@ def calculate_final_rate():
         return "Rate too low"
     else:
         return "Rate approved"
+
+
+# new function to mock
+def next_value(df):
+    """
+    here we are introducing a bug by grabbing the wrong value.
+    """
+    value = df.iloc[0, 1]
+    return value
+
+
+# process function
+def calculate_next_final_rate():
+    """Classify value from helper function"""
+    value = next_value(data_df)
+    if value < 10:
+        return "Rate too low"
+    else:
+        return "Rate approved"
+
 ```
 
-When running the `calculate_final_rate()` function we get `TypeError: '<' not supported between instances of 'str' 
-and 'int'` because we are incorrectly indexing the DataFrame we defined. `[0,1]` gets the first row second column, 
-we need the first row, first column. So to summarize:
-* `[0,1]` returns a string 
-* `[0,0]` returns an int
-
-When we run the `test_rate_calculation.py` file we get:
+We've created a buggy function called `next_value()` which incorrectly indexes a dataframe causing 
+`calculate_next_final_rate()` to fail. We've also included the process `calculate_final_rate()` which uses 
+`grab_value()`. These two functions work properly, but I've added them to see passing tests. If we run `pytest` on 
+this `test_rate_calculation.py` file we get:
 ```text
-collected 1 item                                                               
+collected 2 items                                                              
 
-DataCamp/Courses/PP_Developing_Python_Packages/tests/test_rate_calculation.py F [100%]
+DataCamp/Courses/PP_Developing_Python_Packages/tests/test_rate_calculation.py . [ 50%]
+F                                                                        [100%]
 
 =================================== FAILURES ===================================
-_________________ TestFinalRateCalc.test_calculate_final_rate __________________
+__________________ TestNextFinalRate.test_next_value_mocking ___________________
 
-self = <tests.test_rate_calculation.TestFinalRateCalc object at 0x123da38e0>
+self = <tests.test_rate_calculation.TestNextFinalRate object at 0x11d93d1e0>
 build_df =     Fee  Courses Duration  Discount
 r1    8    Spark   30days      1000
 r2    4  PySpark   40days      2300
 r3    2   Python   35days      1200
 r4    7   pandas   50days      2000
 
-    def test_calculate_final_rate(self, build_df):
+    def test_next_value_mocking(self, build_df):
         data_df = build_df
     
->       actual = calculate_final_rate()
+>       actual = calculate_next_final_rate()
 
-DataCamp/Courses/PP_Developing_Python_Packages/tests/test_rate_calculation.py:26: 
+DataCamp/Courses/PP_Developing_Python_Packages/tests/test_rate_calculation.py:64: 
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 
-    def calculate_final_rate():
+    def calculate_next_final_rate():
         """Classify value from helper function"""
-        value = grab_value(data_df)
+        value = next_value(data_df)
 >       if value < 10:
 E       TypeError: '<' not supported between instances of 'str' and 'int'
 
-DataCamp/Courses/PP_Developing_Python_Packages/mysimplepackage/rate_calculation.py:31: TypeError
+DataCamp/Courses/PP_Developing_Python_Packages/mysimplepackage/rate_calculation.py:47: TypeError
 =========================== short test summary info ============================
-FAILED DataCamp/Courses/PP_Developing_Python_Packages/tests/test_rate_calculation.py::TestFinalRateCalc::test_calculate_final_rate
-============================== 1 failed in 0.88s ===============================
+FAILED DataCamp/Courses/PP_Developing_Python_Packages/tests/test_rate_calculation.py::TestNextFinalRate::test_next_value_mocking
+========================= 1 failed, 1 passed in 0.32s ==========================
 ```
 
-What we see here is our `test_calculate_final_rate()` function failing BUT ONLY BECAUSE our `grab_value()` function 
+What we see here is our `calculate_next_final_rate()` function failing BUT ONLY BECAUSE our `next_value()` function 
 contains a bug. This goes against the whole purpose of testing since test results should indicate bugs in the 
 function under test not dependencies. 
 
@@ -588,10 +603,95 @@ The basic idea of mocking is to replace potentially buggy dependencies with `uni
 during testing. The theoretical structure of the `mocker.patch("dependency name with module name")`. The `mocker.
 patch()` method returns a `unittest.mock.MagicMock()` object which we store in the variable `grab_value_mock`. <br>
 
-During the test, `grab_value()` can be programmed to be a bug-free method. We call this bug-free version 
-`grab_value_bug_free()`. Reminder that this only has to be bug-free in the context of the test environment so it can 
-be much simpler. What we want this bug-free function to do is return the value we are looking for. 
+During the test, `next_value()` can be programmed to be a bug-free method. We call this bug-free version 
+`next_value_bug_free()` and place it inside our `test_.py` file as a static function. Reminder that this only has to be 
+bug-free in the context of the test environment, so it can be much simpler. What we want this bug-free function to do
+is return the value we are looking for. Our `test_.py` file looks like this:
+```python
+import pandas as pd
+import pytest
+from mysimplepackage.rate_calculation import grab_value, calculate_final_rate, calculate_next_final_rate
+from unittest.mock import call
 
+
+def next_value_bug_free(df):
+    """
+
+    this bug free function will return the value 4 from the dataframe built by the pytest fixture
+    """
+    value = df.iloc[1, 0]
+    return value
+
+
+class TestFinalRateCalc(object):
+
+    # build pytest fixture function
+    @pytest.fixture
+    def build_df(self):
+        # build DataFrame
+        charges = {
+            'Fee': [8, 4, 2, 7],
+            'Courses': ["Spark", "PySpark", "Python", "pandas"],
+            'Duration': ['30days', '40days', '35days', '50days'],
+            'Discount': [1000, 2300, 1200, 2000]
+        }
+        index_labels = ['r1', 'r2', 'r3', 'r4']
+        data_df = pd.DataFrame(charges, index=index_labels)
+
+        return data_df
+
+    def test_calculate_final_rate(self, build_df):
+        data_df = build_df
+
+        actual = calculate_final_rate()
+
+        expected = "Rate too low"
+
+        message = f"The expected value was {expected} and the actual value is {actual}"
+
+        assert actual == expected, message
+
+
+class TestNextFinalRate(object):
+    # build pytest fixture function
+    @pytest.fixture
+    def build_df(self):
+        # build DataFrame
+        charges = {
+            'Fee': [8, 4, 2, 7],
+            'Courses': ["Spark", "PySpark", "Python", "pandas"],
+            'Duration': ['30days', '40days', '35days', '50days'],
+            'Discount': [1000, 2300, 1200, 2000]
+        }
+        index_labels = ['r1', 'r2', 'r3', 'r4']
+        data_df = pd.DataFrame(charges, index=index_labels)
+
+        return data_df
+
+    def test_next_value_mocking(self, build_df, mocker):
+        data_df = build_df
+        next_value_mock = mocker.patch(
+            "mysimplepackage.rate_calculation.next_value",
+            side_effect=next_value_bug_free)
+
+        actual = calculate_next_final_rate()
+        expected = "Rate too low"
+
+        assert actual == expected
+```
+So now, we have the bug free function and can mock the function with the bug. This results in a passing test! 
+```text
+============================= test session starts ==============================
+platform darwin -- Python 3.10.2, pytest-7.1.1, pluggy-1.0.0
+rootdir: /Users/joseservin/DataCamp/Courses/PP_Developing_Python_Packages
+plugins: mock-3.7.0
+collected 2 items                                                              
+
+DataCamp/Courses/PP_Developing_Python_Packages/tests/test_rate_calculation.py . [ 50%]
+.                                                                        [100%]
+
+============================== 2 passed in 0.23s ===============================
+```
 
 ## Testing Models
 Now we will move onto training models. For this example, we've created a `train_model` function that takes 
