@@ -4,6 +4,7 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/Courses/PP_Developing_Python_Packages" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Courses/PP_Unit_Testing" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Courses/PP_OOP" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/venv" />
     </content>
     <orderEntry type="inheritedJdk" />

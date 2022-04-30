@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="08f12346-891c-4665-862a-b8e01264cac9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Courses/PP_OOP/Notes.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/DataCamp.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/DataCamp.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Courses/PP_Developing_Python_Packages/mysimplepackage/rate_calculation.py" beforeDir="false" afterPath="$PROJECT_DIR$/Courses/PP_Developing_Python_Packages/mysimplepackage/rate_calculation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Courses/PP_Developing_Python_Packages/tests/test_rate_calculation.py" beforeDir="false" afterPath="$PROJECT_DIR$/Courses/PP_Developing_Python_Packages/tests/test_rate_calculation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Courses/PP_Unit_Testing/Notes.md" beforeDir="false" afterPath="$PROJECT_DIR$/Courses/PP_Unit_Testing/Notes.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -291,7 +290,9 @@
       <workItem from="1650935907353" duration="1901000" />
       <workItem from="1651023926982" duration="4570000" />
       <workItem from="1651072965963" duration="10627000" />
-      <workItem from="1651168860973" duration="2320000" />
+      <workItem from="1651168860973" duration="2439000" />
+      <workItem from="1651247272921" duration="1005000" />
+      <workItem from="1651336532724" duration="4883000" />
     </task>
     <servers />
   </component>
