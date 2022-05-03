@@ -161,3 +161,118 @@ isinstance(savings_acct, BankAccount)
 SavingsAccount is a BankAccount BUT BankAccount IS NOT a SavingsAccount. 
 
 ## Customizing functionality via inheritance
+We can customize functionality from Parent classes by using the `Parent.Method` syntax to call the function and 
+apply any changes needed. For example:
+```python
+class CheckingAccount(BankAccount):
+    def __init__(self, balance, limit):
+        BankAccount.__init__(self, balance)
+        self.limit = limit
+
+    def deposit(self, amount):
+        self.balance += amount
+
+    def withdraw(self, amount, fee=0):
+        if fee <= self.limit:
+            # here we use the Parent class function since this functionality already exists
+            BankAccount.withdraw(self, amount - fee)
+        else:
+            BankAccount.withdraw(self, amount - self.limit)
+```
+Here we call the `BankAccount.withdraw` method in the child `CheckingAccount` class in order to change the methods 
+functionality and implementation. We do this to avoid having to create another method or action that does the same 
+thing. 
+
+## Operator Overloading: Comparison
+When checking object equality in OOP, there are several steps we must take in order to ensure we are correctly 
+comparing object. For example, if we create two account with the same balance and for this exercise assume they 
+belong to the same person then they must be equal. However, when we compare them we get `False`. 
+```python
+from BankAccount_OOP import BankAccount, SavingsAccount, CheckingAccount
+
+acct_1 = BankAccount(2000)
+acct_2 = BankAccount(2000)
+
+print(acct_1)
+print(acct_2)
+print(acct_1 == acct_2)
+```
+```text
+<BankAccount_OOP.BankAccount object at 0x7f7aee4e95e0>
+<BankAccount_OOP.BankAccount object at 0x7f7af1d69fa0>
+False
+```
+This is because the two separate class instances are stored in a different memory allocations. Essentailly, what we 
+are saying is "allocate a chunk of memory for acct_1 and another for acct_2." So, when we compare the two calss 
+instances we are truly comparing references not the data. 
+
+### Overloading `__eq__()`
+This method is called when 2 objects of a class are compared using `==`. We first add it to the class:
+```python
+class BankAccount:
+    def __init__(self, balance):
+        self.balance = balance
+
+    def withdraw(self, amount):
+        self.balance -= amount
+
+    def __eq__(self, other):
+        print("__eq__() is called ")
+
+        return self.balance == other.balance
+```
+```text
+<BankAccount_OOP.BankAccount object at 0x7fe3f3adc5e0>
+<BankAccount_OOP.BankAccount object at 0x7fe3f757a8e0>
+__eq__() is called 
+True
+```
+This gives us a `True` boolean when comparing the two accounts since this only attributes we are comparing is the 
+account balance. Python always calls the child's `__eq__()` method when comparing a child object to a parent object.
+
+The other comparison operators that exists are:
+* `__equ__()` for `==`
+* `__ne__()` for `!=`
+* `__ge__()` for `>=`
+* `__le__()` for `<=`
+* `__gt__()` for `>`
+* `__lt__()` for `<`
+
+## Operator Overloading: String representation
+There are two string representation's we can overload:
+1. `__str__()`: represents what will be shows when we `print()` and/or use `str()`. 
+   1. informal, for end user
+   2. string representation
+2. `__repr__()`: represents what will be shown with `repr()` and when we don't use print
+   1. formal, for developer
+   2. reproducible representation
+   3. fallback for `print()` when `__str__()` is not defined
+   4. The point of `__repr__()` is to give the exact call to create the object
+
+```python
+class BankAccount:
+    def __init__(self, balance):
+        self.balance = balance
+
+    def withdraw(self, amount):
+        self.balance -= amount
+
+    def __eq__(self, other):
+        print("__eq__() is called ")
+
+        return self.balance == other.balance
+
+    def __repr__(self):
+        account_string = f"BankAccount(20000)"
+        return account_string
+```
+```text
+BankAccount(20000)
+BankAccount(20000)
+__eq__() is called 
+True
+```
+
+
+
+
