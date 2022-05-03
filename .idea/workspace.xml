@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="08f12346-891c-4665-862a-b8e01264cac9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Courses/PP_OOP/BankAccount_OOP.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Courses/PP_OOP/bank_run.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Courses/PP_OOP/Notes.md" beforeDir="false" afterPath="$PROJECT_DIR$/Courses/PP_OOP/Notes.md" afterDir="false" />
     </list>
@@ -294,7 +292,8 @@
       <workItem from="1651168860973" duration="2439000" />
       <workItem from="1651247272921" duration="1005000" />
       <workItem from="1651336532724" duration="4922000" />
-      <workItem from="1651587150867" duration="4383000" />
+      <workItem from="1651587150867" duration="4411000" />
+      <workItem from="1651609572734" duration="2842000" />
     </task>
     <servers />
   </component>

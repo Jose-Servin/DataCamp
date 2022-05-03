@@ -272,7 +272,41 @@ BankAccount(20000)
 __eq__() is called 
 True
 ```
+## Exceptions
+The main purpose of exception handling is to prevent the program from termination when an exception is raised. We do 
+this by using a `try - except - finally` block. <br>
 
+We can also raise exceptions using `raise` followed by `error_name('error message')`. For example:
+```python
+def make_list(length):
+    if length <= 0:
+        raise ValueError('Invalid Length!')
+    return [1]*length
+```
+### Custom Expecption
+Custom exceptions can be created in OOP format by inheriting from the Exception class.
+```python
+class BalanceError(Exception):
+    pass
 
+class Customer:
+    def __init__(self, name, balance):
+       # here we are using a condition to check the given parameter before attributing it to the class instance. 
+        if balance < 0: 
+            raise BalanceError('Balance has to be non-negative')
+        else:
+            self.name, self.balance = name, balance 
+```
 
+It is best practice including custom exceptions in OOP projects because this guarantees the object does not get 
+created. In other words, the exception interrupts the constructor. The user can bypass our custom try-except blocks 
+by using their own:
+```python
+try:
+    instance = Create_Object(param1, param2)
+except BalaneError:
+    instance = Create_Object(param1, param2)
+```
+
+## Designing for Inheritance and Polymorphism
 
