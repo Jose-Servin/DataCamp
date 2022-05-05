@@ -309,4 +309,64 @@ except BalaneError:
 ```
 
 ## Designing for Inheritance and Polymorphism
+<mark> Polymorphism </mark>: using a unified interface to operate on objects of different classes. 
 
+Liskov substitution principle <br>
+Base class should be interchangeable with any of its subclasses without altering any properties of the program. <br>
+
+So for our example, wherever `BankAccount` works, `CheckingAccount` should work as well.  
+
+* Syntactically
+  * function signatures are compatible 
+    * arguments, return values
+* Semantically 
+  * the state of the object and the program remain consistent
+    * Subclass method doesn't strengthen input conditions
+    * subclass method doesn't weaken output conditions
+    * no additional exceptions
+
+### Violating LSP
+`ParentClass.withdraw()` requires 1 parameter, but `Child.withdraw()` requires 2. We can fix this by making the 
+`Child.withdraw()` second argument a default parameter. <br>
+
+"Subclass method strengthens input condition": <br>
+`ParentClass.withdraw()` accepts any amount, but `Child.withdraw()` assumes that the amount is limited. <br>
+
+"Subclass method weakens output condition": <br>
+`ParentClass.withdraw()` can only leave a positive balance or cause an error, but `Child.withdraw()` can leave a 
+negative balance.
+
+## Managing data access: private attributes
+In Python all data is public but there are certain steps we can take in order to classify our data as internal.
+
+* Naming convention: internal attributes <br>
+We can make an attribute or method as internal using `obj._att_name` or `obj._method_name()`. The `_` means internal 
+  and marks it not a part of the public API.
+
+
+* Pseudoprivate attributes <br>
+`obj.__att_name` or `obj.__method_name()` refers to "private". In this case,it means the data is not inherited. The 
+  main use of this pseudo private convention is to prevent name clashes in inherited classes. 
+
+## Properties
+Properties are used to control attribute access. We are able to check the attribute value for validity and or mark 
+the attribute as read-only. 
+
+Understanding `@property`: <br>
+```python
+class Employer:
+    def __init__(self, name, new_salary):
+        self._salary  = new_salary # here we use leading _ to mark the attribute as protected. 
+
+    @property # use property on a method whose name is exactly the same as the restricted attribute. 
+    def salary(self):
+        return self._salary # return the restricted attribute
+
+    @salary.setter # using setter on a method attr() that will be called when obj.attr = value 
+    def salary(self, new_salary): # the value to assign passed as argument 
+        if new_salary < 0:
+            raise ValueError('Invalid salary')
+        else:
+            self._salary = new_salary
+```
+Now, to set a new salary we use `emp.salary = new_value` and the setter will be called. 
